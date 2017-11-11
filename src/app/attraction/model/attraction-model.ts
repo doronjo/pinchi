@@ -28,4 +28,4 @@ attractionSchema.pre("save", function(next) {
     next();
   });
 
-export const Attraction: Model<IAttractionModel> = DataAccess.mongooseConnection.model<IAttractionModel>("Attraction", attractionSchema);
+export const AttractionModel: Model<IAttractionModel> = DataAccess.mongooseConnection.model<IAttractionModel>("Attraction", attractionSchema);

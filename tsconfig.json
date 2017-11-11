@@ -2,7 +2,10 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "outDir": "dist"
+    "types": ["reflect-metadata"],
+    "outDir": "dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     "src/**/*.ts"

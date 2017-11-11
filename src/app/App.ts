@@ -1,8 +1,11 @@
 import * as path from "path";
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import AttractionRouter from "./attraction/attraction-router";
-import * as mongoose from "mongoose"; 
+import  "./inversify.config";
+import attractionRouter from "./attraction/attraction-router";
+import tagRouter from "./tag/tag-router";
+import  mongoose = require("mongoose"); 
+
 class App{
 
     public express: express.Application;
@@ -11,7 +14,7 @@ class App{
         this.express = express();
         this.middleware();
         this.routes();
-        //let connection: mongoose.MongooseThenable = mongoose.connect(this.MONGODB_CONNECTION);
+        mongoose.Promise = global.Promise;
     }
 
     private middleware(): void {
@@ -27,7 +30,8 @@ class App{
           });
         });
         this.express.use('/', router);
-        this.express.use('/attraction', AttractionRouter);
+        this.express.use('/attraction', attractionRouter);
+        this.express.use('/tag', tagRouter);
     } 
 }
 

@@ -1,25 +1,19 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { Attraction } from "./repo/attraction";
+import { AtrractionController } from "./atrraction-controller"
+
 
 export class AttractionRouter {
 
     router: Router; 
-
+    private _attractionController:AtrractionController;
     constructor() {
+        this._attractionController = AtrractionController.getInstance();
         this.router = Router();
         this._init();
     }
-
-    _getAttraction(res:Response, req:Request){
-        console.log("I am here");
-        Attraction.find({},(err, attractions)=>{
-            console.log(err);
-            console.log(attractions);
-        })
-    }   
-
+    
     private _init(){
-        this.router.get('/', this._getAttraction);
+        this.router.get('/', this._attractionController.getArraction);
     } 
 }
 
