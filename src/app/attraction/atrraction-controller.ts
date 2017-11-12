@@ -25,8 +25,14 @@ export class AtrractionController{
 
     getArraction = (req:Request, res:Response)=>{    
         let tagId = parseInt(req.query.tagId);
+        let expression = req.query.expression;
+
         if(tagId && typeof(tagId) === "number"){
             this._attractionService.getAttractionByTagId([tagId]).then((results)=>{
+                res.send(results);
+            })
+        }else if(expression){
+            this._attractionService.getAttractionByExpression(expression).then((results)=>{
                 res.send(results);
             })
         }else{

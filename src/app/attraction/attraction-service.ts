@@ -10,6 +10,7 @@ import { REPO_TYPES } from "../types"
 
 export interface IAttractionService{
       getAttractionByTagId(tagArray:Array<number>):Promise<any>;
+      getAttractionByExpression(expression: string):Promise<any>;
       getAll():Promise<any>;
 }
 
@@ -26,6 +27,9 @@ export class AttractionService implements IAttractionService{
 
     getAttractionByTagId(tagArray:Array<number>){
         return this._attractionRepo.getAttractionByTagId(tagArray)
+    }
+    getAttractionByExpression(expression: string){
+        return this._attractionRepo.getAttractionByExpression(expression)
     }
 
     getAll(){
